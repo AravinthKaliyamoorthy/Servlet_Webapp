@@ -1,11 +1,19 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>FirstServletWebApp</servlet-name>
-    <servlet-class>WelcomeServlet</servlet-class>
+    <servlet-name>GenericWelcomeServlet</servlet-name>
+    <servlet-class>WelcomeGenericServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>FirstServletWebApp</servlet-name>
-    <url-pattern>/welcome</url-pattern>
+    <servlet-name>GenericWelcomeServlet</servlet-name>
+    <url-pattern>/welcomeGeneric</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>HttpWelcomeServlet</servlet-name>
+    <servlet-class>WelcomeHttpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HttpWelcomeServlet</servlet-name>
+    <url-pattern>/welcomeHttp</url-pattern>
   </servlet-mapping>
 </web-app>
