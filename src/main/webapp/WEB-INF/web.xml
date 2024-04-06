@@ -1,0 +1,11 @@
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>FirstServletWebApp</servlet-name>
+    <servlet-class>WelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FirstServletWebApp</servlet-name>
+    <url-pattern>/welcome</url-pattern>
+  </servlet-mapping>
+</web-app>
