@@ -12,7 +12,7 @@ public class WelcomeGenericServlet extends GenericServlet {
     public static final Logger logger = LoggerFactory.getLogger(WelcomeGenericServlet.class);
 
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws IOException {
         logger.info("Entered service method");
         servletResponse.setContentType("text/html");
         PrintWriter out = servletResponse.getWriter();
