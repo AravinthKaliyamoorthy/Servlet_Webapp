@@ -1,5 +1,7 @@
 <web-app>
+
   <display-name>Archetype Created Web Application</display-name>
+
   <servlet>
     <servlet-name>GenericWelcomeServlet</servlet-name>
     <servlet-class>WelcomeGenericServlet</servlet-class>
@@ -43,4 +45,15 @@
     <servlet-name>TestingServletObjectCreation</servlet-name>
     <url-pattern>/servletObject</url-pattern>
   </servlet-mapping>
+
+  <context-param>
+    <param-name>AppName</param-name>
+    <param-value>Testing Servlet Web Application</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>Testing Context Param</param-name>
+    <param-value>Testing Context Param</param-value>
+  </context-param>
+
 </web-app>
