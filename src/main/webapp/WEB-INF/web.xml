@@ -8,6 +8,24 @@
     <servlet-name>GenericWelcomeServlet</servlet-name>
     <url-pattern>/welcomeGeneric</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PrintOutInitParam</servlet-name>
+    <servlet-class>PrintOutInitParam</servlet-class>
+    <init-param>
+      <param-name>name1</param-name>
+      <param-value>ruban</param-value>
+    </init-param>
+    <init-param>
+      <param-name>name2</param-name>
+      <param-value>manivel</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PrintOutInitParam</servlet-name>
+    <url-pattern>/initParam</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>HttpWelcomeServlet</servlet-name>
     <servlet-class>WelcomeHttpServlet</servlet-class>
@@ -15,5 +33,14 @@
   <servlet-mapping>
     <servlet-name>HttpWelcomeServlet</servlet-name>
     <url-pattern>/welcomeHttp</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TestingServletObjectCreation</servlet-name>
+    <servlet-class>TestingServletObjectCreation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestingServletObjectCreation</servlet-name>
+    <url-pattern>/servletObject</url-pattern>
   </servlet-mapping>
 </web-app>
