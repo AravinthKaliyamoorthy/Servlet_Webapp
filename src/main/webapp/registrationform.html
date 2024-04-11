@@ -3,16 +3,19 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Login Form Design | CodeLab</title>
+    <title>Registration Form Design | CodeLab</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrapper">
     <div class="title">
-        Login Form
+        Registration Form
     </div>
-    <form method="POST" action="./login">
-        <input type="hidden" id="errorMessage" name="errorMessage" value="">
+    <form method="POST" action="./registration">
+        <div class="field">
+            <input type="text" name="uname" required>
+            <label>UserName</label>
+        </div>
         <div class="field">
             <input type="text" name="umail" required>
             <label>Email Address</label>
@@ -21,20 +24,15 @@
             <input type="password" name="upwd" required>
             <label>Password</label>
         </div>
-        <div class="content">
-            <div class="checkbox">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">Remember me</label>
-            </div>
-            <div class="pass-link">
-                <a href="#">Forgot password?</a>
-            </div>
+        <div class="field">
+            <input type="password" name="ucpwd" required>
+            <label>ConfirmPassword</label>
         </div>
         <div class="field">
-            <input type="submit" value="Login">
+            <input type="submit" value="Signup">
         </div>
         <div class="signup-link">
-            Not a member? <a href="registrationform.html">Signup now</a>
+            Already a member? <a href="loginform.html">Login now</a>
         </div>
     </form>
 </div>

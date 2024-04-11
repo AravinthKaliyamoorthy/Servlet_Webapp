@@ -1,3 +1,6 @@
+package com.webapp.servlet;
+
+import com.webapp.service.UserService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,19 +23,21 @@ public class LoginServlet extends HttpServlet {
         logger.info("Entered doPost method");
         response.setContentType("text/html");
 
-        String uname = request.getParameter("uname");
+        String umail = request.getParameter("umail");
         String upwd = request.getParameter("upwd");
 
-        if(uname.equals("Aravinth") && upwd.equals("password")){
-            logger.info("User Credentials passed successfully");
+        UserService userService = new UserService();
+        String status = userService.checkLogin(umail, upwd);
+
+        if(status.equals("success")) {
             response.sendRedirect("./index.html");
         }
         else{
-            request.setAttribute("errorMessage", "Invalid username or password!");
-
-            // Forward the request to login.html to display the error message
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
-            dispatcher.forward(request, response);
+            PrintWriter out = response.getWriter();
+            out.println("<h1>Invalid Credentials</h1>");
+            RequestDispatcher rd = request.getRequestDispatcher("./loginform.html");
+            rd.include(request, response);
+            out.close();
         }
         logger.info("Exited doPost method");
     }
