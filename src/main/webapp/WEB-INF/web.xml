@@ -4,7 +4,7 @@
 
   <servlet>
     <servlet-name>GenericWelcomeServlet</servlet-name>
-    <servlet-class>WelcomeGenericServlet</servlet-class>
+    <servlet-class>com.servletlearning.WelcomeGenericServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GenericWelcomeServlet</servlet-name>
@@ -12,8 +12,8 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>PrintOutInitParam</servlet-name>
-    <servlet-class>PrintOutInitParam</servlet-class>
+    <servlet-name>com.servletlearning.PrintOutInitParam</servlet-name>
+    <servlet-class>com.servletlearning.PrintOutInitParam</servlet-class>
     <init-param>
       <param-name>name1</param-name>
       <param-value>ruban</param-value>
@@ -24,13 +24,13 @@
     </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>PrintOutInitParam</servlet-name>
+    <servlet-name>com.servletlearning.PrintOutInitParam</servlet-name>
     <url-pattern>/initParam</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>HttpWelcomeServlet</servlet-name>
-    <servlet-class>WelcomeHttpServlet</servlet-class>
+    <servlet-class>com.servletlearning.WelcomeHttpServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HttpWelcomeServlet</servlet-name>
@@ -38,11 +38,11 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>CustomServletFactory</servlet-name>
-    <servlet-class>CustomServletFactory</servlet-class>
+    <servlet-name>com.servletlearning.CustomServletFactory</servlet-name>
+    <servlet-class>com.servletlearning.CustomServletFactory</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CustomServletFactory</servlet-name>
+    <servlet-name>com.servletlearning.CustomServletFactory</servlet-name>
     <url-pattern>/servletObject</url-pattern>
   </servlet-mapping>
 

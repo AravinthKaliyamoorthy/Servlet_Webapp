@@ -1,3 +1,5 @@
+package com.servletlearning;
+
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -7,15 +9,15 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class TestingServletObjectCreation extends HttpServlet {
+public class WelcomeHttpServlet extends HttpServlet {
 
-    public static final Logger logger = LoggerFactory.getLogger(TestingServletObjectCreation.class);
+    public static final Logger logger = LoggerFactory.getLogger(WelcomeHttpServlet.class);
 
     static{
         logger.info("Entered Static Block");
     }
 
-    public TestingServletObjectCreation(){
+    public WelcomeHttpServlet(){
         logger.info("Entered Constructor method");
     }
 
@@ -36,7 +38,7 @@ public class TestingServletObjectCreation extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>Testing Servlet Object Creation Process...</h1>");
+        out.println("<h1>Welcome to Http Servlet</h1>");
         out.println("</body></html>");
         logger.info("Exited doGet method");
     }
