@@ -1,5 +1,3 @@
-package com.servletlearning;
-
 import jakarta.servlet.*;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;

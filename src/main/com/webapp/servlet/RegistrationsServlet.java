@@ -1,5 +1,3 @@
-package com.webapp.servlet;
-
 import com.webapp.service.UserService;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/registration")
-public class RegistrationServlet extends HttpServlet {
+public class RegistrationsServlet extends HttpServlet {
 
     Logger logger = LoggerFactory.getLogger(RegistrationServlet.class);
 

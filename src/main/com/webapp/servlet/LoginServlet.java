@@ -1,5 +1,3 @@
-package com.webapp.servlet;
-
 import com.webapp.service.UserService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
