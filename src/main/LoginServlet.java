@@ -19,7 +19,6 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("Entered doPost method");
         response.setContentType("text/html");
-        PrintWriter printWriter = response.getWriter();
 
         String uname = request.getParameter("uname");
         String upwd = request.getParameter("upwd");
