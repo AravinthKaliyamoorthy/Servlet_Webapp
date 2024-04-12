@@ -1,4 +1,5 @@
 import com.webapp.service.UserService;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,12 +14,14 @@ import java.io.PrintWriter;
 @WebServlet("/registration")
 public class RegistrationsServlet extends HttpServlet {
 
-    Logger logger = LoggerFactory.getLogger(RegistrationServlet.class);
+    Logger logger = LoggerFactory.getLogger(RegistrationsServlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
         logger.info("Entered doPost method");
         resp.setContentType("text/html");
+
+        ServletContext servletContext = getServletContext();
 
         String uname = req.getParameter("uname");
         String umail = req.getParameter("umail");
@@ -27,7 +30,7 @@ public class RegistrationsServlet extends HttpServlet {
 
         PrintWriter out = resp.getWriter();
         UserService  userService = new UserService();
-        String status = userService.registerUser(uname, umail, upwd, ucpwd);
+        String status = userService.registerUser(uname, umail, upwd, ucpwd, servletContext);
         if(status.equals("success")){
             resp.sendRedirect("./loginform.html");
         }

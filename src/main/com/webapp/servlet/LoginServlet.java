@@ -1,5 +1,6 @@
 import com.webapp.service.UserService;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,11 +22,13 @@ public class LoginServlet extends HttpServlet {
         logger.info("Entered doPost method");
         response.setContentType("text/html");
 
+        ServletContext servletContext = getServletContext();
+
         String umail = request.getParameter("umail");
         String upwd = request.getParameter("upwd");
 
         UserService userService = new UserService();
-        String status = userService.checkLogin(umail, upwd);
+        String status = userService.checkLogin(umail, upwd, servletContext);
 
         if(status.equals("success")) {
             response.sendRedirect("./index.html");

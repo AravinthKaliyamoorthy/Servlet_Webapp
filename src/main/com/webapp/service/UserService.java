@@ -1,44 +1,26 @@
 package com.webapp.service;
 
-import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-
 
 public class UserService {
 
     Logger logger = LoggerFactory.getLogger(UserService.class);
 
-    Connection con = null;
-    Statement stmt = null;
-    ResultSet rs = null;
-
-    public UserService(){
-        logger.info("Inside Constructor");
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/servlet_webappdb","root","password");
-            stmt = con.createStatement();
-            logger.info("Connection established successfully");
-            logger.info("Statement created successfully");
-            logger.info("Exited Constructor");
-        }
-        catch (Exception e){
-            logger.error("Exception occurred while connecting to database");
-            e.printStackTrace();
-        }
-    }
-
-    public String checkLogin(String umail, String upwd){
+    public String checkLogin(String username, String password, ServletContext servletContext){
         logger.info("Entered checkLogin");
         String status = "";
         try{
-            rs = stmt.executeQuery("SELECT * FROM users WHERE umail = '"+umail+"' AND upwd = '"+upwd+"'");
+            Connection connection = (Connection) servletContext.getAttribute("databaseConnection");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE umail = ? AND upwd = ?");
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
             boolean b = rs.next();
             if(b){
                 status = "success";
@@ -56,26 +38,28 @@ public class UserService {
         return status;
     }
 
-    public String registerUser(String uname, String umail, String upwd, String ucpwd){
+    public String registerUser(String username, String mail, String password, String confirmPassword, ServletContext servletContext){
         logger.info("Entered registration");
         String status = "";
         try{
-            rs = stmt.executeQuery("SELECT * FROM users WHERE umail = '"+umail+"'");
+            Connection connection = (Connection) servletContext.getAttribute("databaseConnection");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE umail = ? AND upwd = ?");
+            stmt.setString(1, mail);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
             boolean b = rs.next();
             if(b){
                 status = "existed";
                 logger.info("User already existed");
             }
+            else if (!password.equals(confirmPassword)) {
+                status = "passwordsDoNotMatch";
+            }
             else{
-                if(!upwd.equals(ucpwd)){
-                    status = "failed";
-                }
-                else{
-                    stmt.executeUpdate("INSERT INTO users VALUES('"+uname+"', '"+umail+"', '"+upwd+"')");
-                    status = "success";
-                    logger.info("Query executed successfully");
-                    logger.info("Exited registration");
-                }
+                stmt.executeUpdate("INSERT INTO users VALUES('"+username+"', '"+mail+"', '"+password+"')");
+                status = "success";
+                logger.info("Query executed successfully");
+                logger.info("Exited registration");
             }
         }
         catch (Exception e){
