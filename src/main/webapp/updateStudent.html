@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Student Details</title>
+    <link rel="stylesheet" href="style/coursesregistration.css">
+</head>
+<body>
+<h3>Update Student Details</h3>
+<form id="updateForm" method="POST" action="./updateStudent">
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <td id="studentName"></td>
+        </tr>
+        <tr>
+            <th>Mail Id</th>
+            <td><input type="text" name="studentEmail" id="studentEmail" required/></td>
+        </tr>
+        <input type="hidden" name="studentName" id="hiddenStudentName" readonly>
+        <tr>
+            <td><input type="submit" /></td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    (function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const studentName = urlParams.get("name");
+        const mail = urlParams.get("email");
+
+        if (studentName) {
+            document.getElementById("studentName").textContent = studentName;
+            document.getElementById("hiddenStudentName").value = studentName;
+
+            // Retrieve and log after setting the value
+            const retrievedName = sessionStorage.getItem("studentName");
+            console.log("Retrieved studentName : ", retrievedName);
+        } else {
+            console.warn("Student name not found in URL parameters");
+        }
+        document.getElementById("studentEmail").value = mail;
+    })();
+</script>
+</body>
+</html>

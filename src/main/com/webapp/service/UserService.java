@@ -10,14 +10,14 @@ import java.sql.ResultSet;
 
 public class UserService {
 
-    Logger logger = LoggerFactory.getLogger(UserService.class);
+    public static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     public String checkLogin(String username, String password, ServletContext servletContext){
         logger.info("Entered checkLogin");
         String status = "";
         try{
             Connection connection = (Connection) servletContext.getAttribute("databaseConnection");
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE umail = ? AND upwd = ?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE student_mail = ? AND password = ?");
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
@@ -43,7 +43,7 @@ public class UserService {
         String status = "";
         try{
             Connection connection = (Connection) servletContext.getAttribute("databaseConnection");
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE umail = ? AND upwd = ?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE student_mail = ? AND password = ?");
             stmt.setString(1, mail);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
@@ -66,6 +66,27 @@ public class UserService {
             logger.error("Exception occurred while executing query");
             e.printStackTrace();
         }
+        return status;
+    }
+
+    public static String courseRegistration(String studentName, String studentQualification, String studentGender, String[] studentCourse, String branch, String studentAddress){
+        logger.info("Entered courseRegistration");
+        String status = "";
+        try{
+            if(studentName.isEmpty() || studentQualification.isEmpty() || studentGender.isEmpty() || studentCourse.length == 0 || branch.isEmpty() || studentAddress.isEmpty()) {
+                status = "emptyFields";
+            }
+            else {
+                logger.info("Received required details from student");
+                status = "success";
+            }
+        }
+        catch (Exception e){
+            status = "failed";
+            logger.error("Exception occurred while courseRegistration", e.getMessage());
+            e.printStackTrace();
+        }
+        logger.info("Exited courseRegistration");
         return status;
     }
 

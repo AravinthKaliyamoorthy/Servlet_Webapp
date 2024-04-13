@@ -1,3 +1,5 @@
+package com.webapp.servlets;
+
 import com.webapp.service.UserService;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.annotation.WebServlet;

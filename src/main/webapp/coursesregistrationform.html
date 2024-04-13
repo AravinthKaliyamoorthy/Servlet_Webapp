@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style/coursesregistration.css">
+</head>
+<body>
+<h3>Student Courses Registration</h3>
+<form method="POST" action="./coursesregistration">
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <td><input type="text" name="studentName" required/></td> </tr>
+        <tr>
+            <th>Student Qualification</th>
+            <td>
+                <input type="checkbox" name="studentQualification" value="BSC" required/>BSC <input type="checkbox" name="squal" value="BCA"/>BCA
+                <input type="checkbox" name="studentQualification" value="MSC"/>MSC
+                <input type="checkbox" name="studentQualification" value="MCA"/>MCA
+                <input type="checkbox" name="studentQualification" value="BTech"/>BTech
+            </td>
+        </tr>
+        <tr>
+            <th>Student Gender</th>
+            <td>
+                <input type="radio" name="studentGender" value="Male" required/>Male <input type="radio" name="sgender" value="Female"/>Female
+            </td>
+        </tr>
+        <tr>
+            <th>Student Courses</th>
+            <td>
+                <select name="studentCourse" size="4" multiple="multiple">
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <optgroup label="Java">
+                        <option value="Core Java">Core Java</option>
+                        <option value="Adv Java">Adv Java</option>
+                        <option value="Hibernate">Hibernate</option>
+                        <option value="Spring MVC">Spring MVC</option>
+                    </optgroup>
+                    <option value=".NET">.NET</option>
+                    <option value="Python">Python</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Branch</th>
+            <td>
+                <select name="branch" required> <option value="Chennai">Chennai</option>
+                    <option value="Bengaluru">Bengaluru</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Delhi">Delhi</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Student Address</th>
+            <td>
+                <textarea name="studentAddress" rows="5" cols="30" required></textarea> </td>
+        </tr>
+        <tr>
+            <td><input type="submit" /></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

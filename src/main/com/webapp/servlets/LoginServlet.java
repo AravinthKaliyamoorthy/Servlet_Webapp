@@ -1,3 +1,5 @@
+package com.webapp.servlets;
+
 import com.webapp.service.UserService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -31,9 +33,11 @@ public class LoginServlet extends HttpServlet {
         String status = userService.checkLogin(umail, upwd, servletContext);
 
         if(status.equals("success")) {
+            logger.info("user login successful");
             response.sendRedirect("./index.html");
         }
         else{
+            logger.info("user login failed");
             PrintWriter out = response.getWriter();
             out.println("<h1>Invalid Credentials</h1>");
             RequestDispatcher rd = request.getRequestDispatcher("./loginform.html");

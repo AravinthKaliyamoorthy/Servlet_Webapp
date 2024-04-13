@@ -1,0 +1,49 @@
+/* Basic styles */
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Form styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+}
+
+th {
+  text-align: left;
+}
+
+input[type="text"],
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+select {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+input[type="submit"] {
+  padding: 0.5rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
